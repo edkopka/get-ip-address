@@ -42,7 +42,7 @@ app.get('/api/whoami', (req, resp) => {
       forwardedFor: req.headers['Forwarded-For'],
       forwarded: req.headers['Forwarded'],
       requestSocket: req.socket.remoteAddress,
-      requestInfo: req.info.remoteAddress
+      requestInfo: req?.info?.remoteAddress
     },
     language: req.headers['accept-language'] ?? 'empty',
     software: req.headers['user-agent'] ?? 'empty'
