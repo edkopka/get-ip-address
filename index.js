@@ -2,6 +2,7 @@
 // where your node app starts
 
 // init project
+const requestIp = require('request-ip');
 require('dotenv').config();
 var express = require('express');
 var app = express();
@@ -29,8 +30,11 @@ app.get('/api/whoami', (req, resp) => {
   console.log('************ New Request ************')
   console.log(req.headers);
   console.log(req.socket.remoteAddress);
+  const clientIP = requestIp.getClientIp(req);
+  console.log(requestIp.getClientIp(req));
   resp.json({ 
     ipaddress: {
+      requestIP: clientIP,
       xClientIp: req.headers['x-client-ip'],
       xForwardedFor: req.headers['x-forwarded-for'], // Not sure where to get the ip address from. Try again when publicly hosted.
       CfConnectingIp: req.headers['CF-Connecting-IP'],
