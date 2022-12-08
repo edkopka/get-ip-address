@@ -34,6 +34,7 @@ app.get('/api/whoami', (req, resp) => {
   console.log(requestIp.getClientIp(req));
   resp.json({ 
     ipaddress: {
+      Express: req.ip,
       requestIP: clientIP,
       xClientIp: req.headers['x-client-ip'],
       xForwardedFor: req.headers['x-forwarded-for'], // Not sure where to get the ip address from. Try again when publicly hosted.
